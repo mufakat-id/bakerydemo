@@ -77,6 +77,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sitemaps",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -253,3 +254,14 @@ if "CSP_DEFAULT_SRC" in os.environ:
         CSP_FRAME_SRC = os.environ.get("CSP_FRAME_SRC").split(",")
     if "CSP_REPORT_URI" in os.environ:
         CSP_REPORT_URI = os.environ.get("CSP_REPORT_URI")
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Wagtail API Documentation",
+    "DESCRIPTION": "API documentation for the Wagtail project.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
